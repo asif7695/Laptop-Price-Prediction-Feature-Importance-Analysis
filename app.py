@@ -6,7 +6,7 @@ import pandas as pd
 
 # load the model
 with open(
-r"D:\Laptop Price Prediction & Feature Importance Analysis\random_forest_model.plk","rb") as file:
+r"D:\Laptop Price Prediction & Feature Importance Analysis\random_forest_model.pkl","rb") as file:
     model = pickle.load(file)
     
     
