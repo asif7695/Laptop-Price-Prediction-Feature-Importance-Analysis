@@ -5,8 +5,8 @@ import pandas as pd
 
 
 # load the model
-with open(
-r"D:\Laptop Price Prediction & Feature Importance Analysis\random_forest_model.pkl","rb") as file:
+
+with open("random_forest_model.pkl","rb") as file:
     model = pickle.load(file)
     
     
@@ -21,7 +21,7 @@ def predict_laptop_price(brand,spec_rating,Ram,Ram_type,ROM,display_size,OS,
     
     #prediction
     prediction = model.predict(input_df)[0]
-    return prediction
+    return f"Approximate Price: {prediction:.2f} TK"
     
 inputs = [
 

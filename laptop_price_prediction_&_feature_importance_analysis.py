@@ -9,8 +9,7 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 # sklearn preproccesing
 from sklearn.model_selection import train_test_split
@@ -194,7 +193,7 @@ print(df['cpu_threads'].median())
 df['cpu_cores'].fillna(df['cpu_cores'].median(), inplace=True)
 df['cpu_threads'].fillna(df['cpu_threads'].median(), inplace=True)
 
-sns.displot(df['cpu_cores'])
+
 
 df['ROM_type'].value_counts()
 
@@ -202,7 +201,7 @@ df["is_ssd"] = (df["ROM_type"] == "SSD").astype(int)
 
 df["is_integrated"] = (df["gpu_type"] == "Integrated").astype(int)
 
-sns.displot(df['display_size'])
+
 
 df['Ram_type'].value_counts()
 
@@ -318,14 +317,6 @@ final_pipe.fit(x_train,y_train)
 final_y_pred = final_pipe.predict(x_test)
 
 
-# plot actual vs best pred
-plt.figure(figsize=(10, 6))
-plt.scatter(y_test, final_y_pred, alpha=0.5)
-plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], linestyle='--', color='red')
-plt.xlabel('Actual Price')
-plt.ylabel('Predicted Price')
-plt.title('Actual vs Predicted Prices')
-plt.show()
 
 """# cross validation"""
 
@@ -421,13 +412,10 @@ print(rand_scorers.best_params_)
 """#saving the model with pickling"""
 
 import pickle
-filename = 'random_forest_model.plk'
+filename = 'random_forest_model.pkl'
 
 with open(filename, 'wb') as file:
   pickle.dump(rand_scorers, file)
-
-with open('/content/random_forest_model.plk','rb') as file:
-  rf_loaded_model=pickle.load(file)
 
 #rf_loaded_model.predict(x_test)
 print("done!!!!!")
